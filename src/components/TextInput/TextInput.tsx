@@ -5,9 +5,10 @@ import {
   TextInputProps as RNTextInputProps,
   TextStyle,
 } from 'react-native';
-import {$fontFamily, $fontSizes, Box, BoxProps, Text} from '@components';
 import {useAppTheme} from '@hooks';
 import {useRef} from 'react';
+import {Box, BoxProps} from '../Box/Box';
+import {$fontFamily, $fontSizes, Text} from '../Text/Text';
 
 export interface TextInputProps extends RNTextInputProps {
   label: string;
@@ -44,26 +45,26 @@ export function TextInput({
         <Text present="paragraphMedium" mb="s4">
           {label}
         </Text>
-      </Pressable>
-      <Box {...$textInputContainer}>
-        <RNTextInput
-          ref={inputRef}
-          placeholderTextColor={colors.gray2}
-          autoCapitalize="none"
-          {...TextInputProps}
-          style={$textInputStyle}
-        />
-        {RightComponent && (
-          <Box justifyContent="center" pl="s16">
-            {RightComponent}
-          </Box>
+        <Box {...$textInputContainer}>
+          <RNTextInput
+            ref={inputRef}
+            placeholderTextColor={colors.gray2}
+            autoCapitalize="none"
+            {...TextInputProps}
+            style={$textInputStyle}
+          />
+          {RightComponent && (
+            <Box justifyContent="center" pl="s16">
+              {RightComponent}
+            </Box>
+          )}
+        </Box>
+        {errorMessage && (
+          <Text present="paragraphSmall" bold color="error">
+            {errorMessage}
+          </Text>
         )}
-      </Box>
-      {errorMessage && (
-        <Text present="paragraphSmall" bold color="error">
-          {errorMessage}
-        </Text>
-      )}
+      </Pressable>
     </Box>
   );
 }

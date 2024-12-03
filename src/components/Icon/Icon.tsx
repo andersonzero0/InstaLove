@@ -3,8 +3,9 @@ import {ThemeColors} from '@theme';
 import {useAppTheme} from '@hooks';
 import {Pressable} from 'react-native';
 import IconVector from '@react-native-vector-icons/ionicons';
+import {Box} from '../Box/Box';
 
-type IconName = 'arrow-back';
+export type IconName = Parameters<typeof IconVector>[0]['name'];
 
 export interface IconProps {
   name: IconName;
@@ -24,10 +25,12 @@ export function Icon({
   if (onPress) {
     return (
       <Pressable hitSlop={10} onPress={onPress}>
-        <IconVector name={name} color={colors[color]} size={size} />;
+        <Box>
+          <IconVector name={name} color={colors[color]} size={size} />
+        </Box>
       </Pressable>
     );
   }
 
-  return <IconVector name="arrow-back" color="black" size={size} />;
+  return <IconVector name={name} color={colors[color]} size={size} />;
 }
