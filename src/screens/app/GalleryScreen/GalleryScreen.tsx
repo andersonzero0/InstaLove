@@ -1,27 +1,32 @@
 import React from 'react';
-import {Image} from 'react-native';
 
 import {useGalleryList} from '@domain';
 
-import {Box, Screen, Text} from '@components';
+import {ActivityIndicator, Box, Button, Icon, Screen} from '@components';
+import {$shadowProps} from '@theme';
+
+import {GalleryContainer} from './components';
 
 export function GalleryScreen() {
-  const {list} = useGalleryList();
-
-  console.log(list);
+  const {list, isFetching} = useGalleryList();
 
   return (
-    <Screen scrollable>
-      <Text>
-        {list &&
-          list?.map(item => {
-            return (
-              <Box key={item.id}>
-                <Image src={item.url} style={{width: 100, height: 100}} />
-              </Box>
-            );
-          })}
-      </Text>
-    </Screen>
+    <Box flex={1}>
+      <Screen scrollable flex={1}>
+        {isFetching ? (
+          <Box justifyContent="center" alignItems="center">
+            <ActivityIndicator />
+          </Box>
+        ) : (
+          <Box>
+            <GalleryContainer data={list} />
+          </Box>
+        )}
+      </Screen>
+      <Button
+        style={[{position: 'absolute', bottom: 8, right: 24}, $shadowProps]}
+        icon={<Icon name="add-circle-sharp" color="background" />}
+      />
+    </Box>
   );
 }

@@ -12,10 +12,11 @@ import {buttonPresets} from './ButtonPresets';
 export type ButtonPreset = 'primary' | 'outline';
 
 interface ButtonProps extends TouchableOpacityBoxProps {
-  title: string;
+  title?: string;
   loading?: boolean;
   preset?: ButtonPreset;
   disabled?: boolean;
+  icon?: React.ReactNode;
 }
 
 export function Button({
@@ -23,6 +24,7 @@ export function Button({
   loading,
   preset = 'primary',
   disabled,
+  icon,
   ...touchableOpacityBoxProps
 }: ButtonProps) {
   const buttonPresent =
@@ -41,10 +43,13 @@ export function Button({
       {loading ? (
         <ActivityIndicator color={buttonPresent.content} />
       ) : (
-        <Text present="paragraphMedium" bold color={buttonPresent.content}>
-          {title}
-        </Text>
+        title && (
+          <Text present="paragraphMedium" bold color={buttonPresent.content}>
+            {title}
+          </Text>
+        )
       )}
+      {icon}
     </TouchableOpacityBox>
   );
 }
