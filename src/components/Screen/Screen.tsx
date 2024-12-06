@@ -1,8 +1,10 @@
 import React from 'react';
+import {KeyboardAvoidingView, Platform} from 'react-native';
+
 import {Box, BoxProps} from '@components';
 import {useAppSafeArea, useAppTheme} from '@hooks';
+
 import {ScreenHeader, ScrollViewContainer, ViewContainer} from './components';
-import {KeyboardAvoidingView, Platform} from 'react-native';
 
 export interface ScreenProps extends BoxProps {
   children: React.ReactNode;

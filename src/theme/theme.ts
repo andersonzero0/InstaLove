@@ -1,5 +1,6 @@
-import {createTheme} from '@shopify/restyle';
 import {ViewStyle} from 'react-native';
+
+import {createTheme} from '@shopify/restyle';
 
 export const palette = {
   pinkPrimary: '#F2778D',

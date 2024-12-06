@@ -1,9 +1,12 @@
 import React from 'react';
+
 import {
   BottomTabBarProps,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import {Text} from '@components';
+
+import {ChatScreen, GalleryScreen, HomeScreen, ProfileScreen} from '@screens';
+
 import {AppTabBar} from './AppTabBar';
 
 export type AppTabBottomParamList = {
@@ -26,10 +29,10 @@ export function AppTabNavigator() {
       screenOptions={{
         headerShown: false,
       }}>
-      <Tab.Screen name="HomeScreen" component={() => <Text>Home</Text>} />
-      <Tab.Screen name="GalleryScreen" component={() => <Text>Gallery</Text>} />
-      <Tab.Screen name="ChatScreen" component={() => <Text>Chat</Text>} />
-      <Tab.Screen name="ProfileScreen" component={() => <Text>Profile</Text>} />
+      <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      <Tab.Screen name="GalleryScreen" component={GalleryScreen} />
+      <Tab.Screen name="ChatScreen" component={ChatScreen} />
+      <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }

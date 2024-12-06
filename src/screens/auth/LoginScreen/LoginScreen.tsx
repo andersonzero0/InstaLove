@@ -1,6 +1,7 @@
 import React from 'react';
-import {AuthScreenProps} from '@routes';
+
 import {Box, Button, Icon, PasswordInput, Screen, TextInput} from '@components';
+import {AuthScreenProps} from '@routes';
 
 export function LoginScreen({}: AuthScreenProps<'LoginScreen'>) {
   return (

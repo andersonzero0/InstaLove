@@ -1,8 +1,11 @@
 import React from 'react';
-import {ThemeColors} from '@theme';
-import {useAppTheme} from '@hooks';
 import {Pressable} from 'react-native';
+
 import IconVector from '@react-native-vector-icons/ionicons';
+
+import {useAppTheme} from '@hooks';
+import {ThemeColors} from '@theme';
+
 import {Box} from '../Box/Box';
 
 export type IconName = Parameters<typeof IconVector>[0]['name'];
