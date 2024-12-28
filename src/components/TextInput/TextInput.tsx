@@ -44,7 +44,7 @@ export function TextInput({
   return (
     <Box {...boxProps}>
       <Pressable onPress={focusInput}>
-        <Text present="paragraphMedium" mb="s4">
+        <Text preset="paragraphMedium" mb="s4">
           {label}
         </Text>
         <Box {...$textInputContainer}>
@@ -62,7 +62,7 @@ export function TextInput({
           )}
         </Box>
         {errorMessage && (
-          <Text present="paragraphSmall" bold color="error">
+          <Text preset="paragraphSmall" bold color="error">
             {errorMessage}
           </Text>
         )}

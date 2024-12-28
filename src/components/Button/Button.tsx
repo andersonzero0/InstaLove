@@ -44,7 +44,7 @@ export function Button({
         <ActivityIndicator color={buttonPresent.content} />
       ) : (
         title && (
-          <Text present="paragraphMedium" bold color={buttonPresent.content}>
+          <Text preset="paragraphMedium" bold color={buttonPresent.content}>
             {title}
           </Text>
         )

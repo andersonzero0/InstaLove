@@ -1,20 +1,18 @@
 import React from 'react';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
-import {BlurView} from 'expo-blur';
 
 import {
   Box,
   BoxProps,
   Icon,
-  Text,
   TextProps,
   TouchableOpacityBox,
   TouchableOpacityBoxProps,
 } from '@components';
 import {useAppSafeArea} from '@hooks';
 
-import {$shadowProps} from '../theme';
+import {BlurView} from 'expo-blur';
 
 import {AppTabBottomParamList} from './AppTabNavigator';
 import {mapScreenToProps} from './mapScreenToProps';
@@ -24,7 +22,11 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   const {bottom} = useAppSafeArea();
 
   return (
-    <BlurView intensity={90} tint="dark" style={$boxWrapper}>
+    <BlurView
+      tint="dark"
+      intensity={60}
+      experimentalBlurMethod="dimezisBlurView"
+      style={$boxWrapper}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
@@ -80,13 +82,12 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
 }
 
 const $boxWrapper: ViewStyle = {
-  //paddingVertical: 's24',
-  paddingVertical: 24,
+  paddingVertical: 20,
   backgroundColor: 'background',
   flexDirection: 'row',
   width: '80%',
   alignSelf: 'center',
-  borderRadius: 56,
+  borderRadius: 40,
   position: 'absolute',
   bottom: 8,
   overflow: 'hidden',
@@ -95,7 +96,7 @@ const $boxWrapper: ViewStyle = {
 const $label: TextProps = {
   semiBold: true,
   mt: 's4',
-  present: 'paragraphCaption',
+  preset: 'paragraphCaption',
 };
 
 const $itemWrapper: TouchableOpacityBoxProps = {

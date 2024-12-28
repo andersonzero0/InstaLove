@@ -47,14 +47,14 @@ export function ScreenHeader({
           hitSlop={10}>
           <Icon name="arrow-back" color="primary" />
           {showBackLabel && (
-            <Text present="paragraphMedium" semiBold ml="s8">
+            <Text preset="paragraphMedium" semiBold ml="s8">
               Voltar
             </Text>
           )}
         </TouchableOpacityBox>
       )}
       {HeaderComponent}
-      {title && <Text present="headingSmall">{title}</Text>}
+      {title && <Text preset="headingSmall">{title}</Text>}
       {title && <Box width={ICON_SIZE} />}
     </Box>
   );

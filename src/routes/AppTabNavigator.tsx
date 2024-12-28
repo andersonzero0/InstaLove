@@ -29,8 +29,8 @@ export function AppTabNavigator() {
         headerShown: false,
       }}>
       <Tab.Screen name="HomeScreen" component={HomeScreen} />
-      <Tab.Screen name="ChatScreen" component={ChatScreen} />
       <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Tab.Screen name="ChatScreen" component={ChatScreen} />
     </Tab.Navigator>
   );
 }
