@@ -5,13 +5,12 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
-import {ChatScreen, GalleryScreen, HomeScreen, ProfileScreen} from '@screens';
+import {ChatScreen, HomeScreen, ProfileScreen} from '@screens';
 
 import {AppTabBar} from './AppTabBar';
 
 export type AppTabBottomParamList = {
   HomeScreen: undefined;
-  GalleryScreen: undefined;
   ChatScreen: undefined;
   ProfileScreen: undefined;
 };
@@ -30,7 +29,6 @@ export function AppTabNavigator() {
         headerShown: false,
       }}>
       <Tab.Screen name="HomeScreen" component={HomeScreen} />
-      <Tab.Screen name="GalleryScreen" component={GalleryScreen} />
       <Tab.Screen name="ChatScreen" component={ChatScreen} />
       <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
     </Tab.Navigator>

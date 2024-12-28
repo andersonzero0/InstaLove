@@ -3,8 +3,8 @@ import {ViewStyle} from 'react-native';
 import {createTheme} from '@shopify/restyle';
 
 export const palette = {
-  pinkPrimary: '#F2778D',
-  pinkPrimaryLight: '#FEE9F0',
+  pinkPrimary: '#D923BA',
+  pinkPrimaryLight: '#F9E8F4',
   greenSecondary: '#1E3231',
   greenSecondaryLight: '#E8F5F4',
   greenSuccess: '#4ABC86',
@@ -13,6 +13,7 @@ export const palette = {
   redErrorLight: '#FBECEC',
 
   grayBlack: '#000000',
+  grayBlack2: '#0D0D0D',
   gray1: '#636363',
   gray2: '#8E8E8E',
   gray3: '#B3B3B3',
@@ -29,8 +30,8 @@ export const theme = createTheme({
 
     buttonPrimary: palette.pinkPrimary,
 
-    background: palette.grayWhite,
-    backgroundContrast: palette.grayBlack,
+    background: palette.grayBlack2,
+    backgroundContrast: palette.grayWhite,
 
     success: palette.greenSuccess,
     successLight: palette.greenSucessLight,
@@ -58,6 +59,13 @@ export const theme = createTheme({
     s8: 8,
     s12: 12,
     s16: 16,
+    s20: 20,
+    s22: 22,
+    s24: 24,
+    s32: 32,
+    s40: 40,
+    s48: 48,
+    s56: 56,
   },
   textVariants: {
     defaults: {},
@@ -66,10 +74,10 @@ export const theme = createTheme({
 
 export const $shadowProps: ViewStyle = {
   elevation: 10,
-  shadowColor: '#000',
+  shadowColor: '#FFF6',
   shadowOpacity: 0.05,
   shadowRadius: 12,
-  shadowOffset: {width: 0, height: -3},
+  shadowOffset: {width: -2, height: 4},
 };
 
 export type Theme = typeof theme;

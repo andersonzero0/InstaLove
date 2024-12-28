@@ -15,15 +15,8 @@ export const mapScreenToProps: Record<
   HomeScreen: {
     label: 'Início',
     icon: {
-      focused: 'home',
+      focused: 'home-sharp',
       unfocused: 'home-outline',
-    },
-  },
-  GalleryScreen: {
-    label: 'Galeria',
-    icon: {
-      focused: 'images',
-      unfocused: 'images-outline',
     },
   },
   ChatScreen: {

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
+import {BlurView} from 'expo-blur';
 
 import {
   Box,
@@ -17,12 +18,13 @@ import {$shadowProps} from '../theme';
 
 import {AppTabBottomParamList} from './AppTabNavigator';
 import {mapScreenToProps} from './mapScreenToProps';
+import {ViewStyle} from 'react-native';
 
 export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   const {bottom} = useAppSafeArea();
 
   return (
-    <Box {...$boxWrapper} style={[{paddingBottom: bottom}, $shadowProps]}>
+    <BlurView intensity={90} tint="dark" style={$boxWrapper}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
@@ -54,6 +56,7 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
           <TouchableOpacityBox
             key={index}
             {...$itemWrapper}
+            hitSlop={10}
             accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarButtonTestID}
@@ -64,22 +67,29 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
               color={isFocused ? 'primary' : 'backgroundContrast'}
               name={isFocused ? tabItem.icon.focused : tabItem.icon.unfocused}
             />
-            <Text
+            {/* <Text
               {...$label}
               color={isFocused ? 'primary' : 'backgroundContrast'}>
               {tabItem.label}
-            </Text>
+            </Text> */}
           </TouchableOpacityBox>
         );
       })}
-    </Box>
+    </BlurView>
   );
 }
 
-const $boxWrapper: BoxProps = {
-  paddingTop: 's12',
+const $boxWrapper: ViewStyle = {
+  //paddingVertical: 's24',
+  paddingVertical: 24,
   backgroundColor: 'background',
   flexDirection: 'row',
+  width: '80%',
+  alignSelf: 'center',
+  borderRadius: 56,
+  position: 'absolute',
+  bottom: 8,
+  overflow: 'hidden',
 };
 
 const $label: TextProps = {
