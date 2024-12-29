@@ -16,7 +16,7 @@ import {BlurView} from 'expo-blur';
 
 import {AppTabBottomParamList} from './AppTabNavigator';
 import {mapScreenToProps} from './mapScreenToProps';
-import {ViewStyle} from 'react-native';
+import {Image, ViewStyle} from 'react-native';
 
 export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   const {bottom} = useAppSafeArea();
@@ -64,16 +64,27 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
             testID={options.tabBarButtonTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{flex: 1}}>
-            <Icon
-              color={isFocused ? 'primary' : 'backgroundContrast'}
-              name={isFocused ? tabItem.icon.focused : tabItem.icon.unfocused}
-            />
-            {/* <Text
-              {...$label}
-              color={isFocused ? 'primary' : 'backgroundContrast'}>
-              {tabItem.label}
-            </Text> */}
+            style={{flex: 1, justifyContent: 'center'}}>
+            {tabItem.label == 'Perfil' ? (
+              <Box
+                borderWidth={3}
+                borderColor={isFocused ? 'primary' : 'backgroundContrast'}
+                overflow="hidden"
+                borderRadius="s24">
+                <Image
+                  source={{uri: 'https://loremfaces.net/96/id/2.jpg'}}
+                  style={{
+                    width: 48,
+                    height: 48,
+                  }}
+                />
+              </Box>
+            ) : (
+              <Icon
+                color={isFocused ? 'primary' : 'backgroundContrast'}
+                name={isFocused ? tabItem.icon.focused : tabItem.icon.unfocused}
+              />
+            )}
           </TouchableOpacityBox>
         );
       })}
@@ -82,14 +93,14 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
 }
 
 const $boxWrapper: ViewStyle = {
-  paddingVertical: 20,
+  paddingVertical: 8,
   backgroundColor: 'background',
   flexDirection: 'row',
   width: '80%',
   alignSelf: 'center',
   borderRadius: 40,
   position: 'absolute',
-  bottom: 8,
+  bottom: 20,
   overflow: 'hidden',
 };
 

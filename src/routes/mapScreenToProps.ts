@@ -20,10 +20,10 @@ export const mapScreenToProps: Record<
     },
   },
   ChatScreen: {
-    label: 'Chat',
+    label: 'Amigos',
     icon: {
-      focused: 'chatbubble',
-      unfocused: 'chatbubble-outline',
+      focused: 'people',
+      unfocused: 'people-outline',
     },
   },
   ProfileScreen: {
