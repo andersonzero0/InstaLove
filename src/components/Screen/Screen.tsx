@@ -13,6 +13,7 @@ export interface ScreenProps extends BoxProps {
   scrollable?: boolean;
   title?: string;
   noPaddingHorizontal?: boolean;
+  affectedTab?: boolean;
 }
 
 export function Screen({
@@ -21,6 +22,7 @@ export function Screen({
   canGoBack = false,
   scrollable = false,
   noPaddingHorizontal = false,
+  affectedTab = false,
   title,
   style,
   ...boxProps
@@ -37,7 +39,13 @@ export function Screen({
       <Container backgroundColor={colors.background}>
         <Box
           paddingHorizontal={noPaddingHorizontal ? undefined : 's24'}
-          style={[{paddingTop: top, paddingBottom: bottom}, style]}
+          style={[
+            {
+              paddingTop: top,
+              paddingBottom: affectedTab ? bottom + 80 : bottom,
+            },
+            style,
+          ]}
           {...boxProps}>
           <ScreenHeader
             paddingHorizontal={noPaddingHorizontal ? 's24' : undefined}

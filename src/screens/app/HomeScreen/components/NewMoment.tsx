@@ -40,7 +40,7 @@ export function NewMoment() {
   });
 
   return (
-    <Box gap="s20">
+    <Box gap="s20" paddingHorizontal="s24">
       <Box>
         <Text preset="headingMedium">{`Registre um\nmomento do seu dia`}</Text>
         <Text preset="paragraphMedium">{`Hoje, ${formatDate}`}</Text>

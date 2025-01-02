@@ -16,7 +16,7 @@ import {BlurView} from 'expo-blur';
 
 import {AppTabBottomParamList} from './AppTabNavigator';
 import {mapScreenToProps} from './mapScreenToProps';
-import {Image, ViewStyle} from 'react-native';
+import {Image, View, ViewStyle} from 'react-native';
 
 export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   const {bottom} = useAppSafeArea();
@@ -24,9 +24,9 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   return (
     <BlurView
       tint="dark"
-      intensity={60}
+      intensity={85}
       experimentalBlurMethod="dimezisBlurView"
-      style={$boxWrapper}>
+      style={$boxWrapper(bottom)}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
@@ -92,17 +92,19 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   );
 }
 
-const $boxWrapper: ViewStyle = {
-  paddingVertical: 8,
-  backgroundColor: 'background',
-  flexDirection: 'row',
-  width: '80%',
-  alignSelf: 'center',
-  borderRadius: 40,
-  position: 'absolute',
-  bottom: 20,
-  overflow: 'hidden',
-};
+function $boxWrapper(bottom: number): ViewStyle {
+  return {
+    paddingVertical: 8,
+    backgroundColor: 'background',
+    flexDirection: 'row',
+    width: '80%',
+    alignSelf: 'center',
+    borderRadius: 40,
+    position: 'absolute',
+    bottom,
+    overflow: 'hidden',
+  };
+}
 
 const $label: TextProps = {
   semiBold: true,
