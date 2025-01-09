@@ -4,8 +4,11 @@ import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
 import {
   Box,
+  BoxBlur,
+  BoxBlurProps,
   BoxProps,
   Icon,
+  Text,
   TextProps,
   TouchableOpacityBox,
   TouchableOpacityBoxProps,
@@ -17,16 +20,23 @@ import {BlurView} from 'expo-blur';
 import {AppTabBottomParamList} from './AppTabNavigator';
 import {mapScreenToProps} from './mapScreenToProps';
 import {Image, View, ViewStyle} from 'react-native';
+import {$shadowProps} from '../theme';
 
-export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
+export function AppTabBarA({
+  state,
+  descriptors,
+  navigation,
+}: BottomTabBarProps) {
   const {bottom} = useAppSafeArea();
 
+  const boxWrapper = $boxWrapperA(bottom);
+
   return (
-    <BlurView
+    <BoxBlur
       tint="dark"
       intensity={85}
-      experimentalBlurMethod="dimezisBlurView"
-      style={$boxWrapper(bottom)}>
+      {...boxWrapper}
+      style={[{bottom, position: 'absolute'}, $shadowProps]}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
@@ -88,23 +98,41 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
           </TouchableOpacityBox>
         );
       })}
-    </BlurView>
+    </BoxBlur>
   );
 }
 
-function $boxWrapper(bottom: number): ViewStyle {
+function $boxWrapperA(bottom: number): BoxBlurProps {
   return {
-    paddingVertical: 8,
+    paddingVertical: 's8',
     backgroundColor: 'background',
     flexDirection: 'row',
     width: '80%',
     alignSelf: 'center',
-    borderRadius: 40,
-    position: 'absolute',
-    bottom,
+    borderRadius: 's24',
+    //position: 'absolute',
+    //bottom,
     overflow: 'hidden',
   };
 }
+
+// const $label: TextProps = {
+//   semiBold: true,
+//   mt: 's4',
+//   preset: 'paragraphCaption',
+// };
+
+// const $itemWrapper: TouchableOpacityBoxProps = {
+//   activeOpacity: 1,
+//   alignItems: 'center',
+//   accessibilityRole: 'button',
+// };
+
+const $boxWrapper: BoxProps = {
+  paddingTop: 's12',
+  backgroundColor: 'background',
+  flexDirection: 'row',
+};
 
 const $label: TextProps = {
   semiBold: true,

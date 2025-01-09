@@ -7,7 +7,7 @@ import {
 
 import {ChatScreen, HomeScreen, ProfileScreen} from '@screens';
 
-import {AppTabBar} from './AppTabBar';
+import {AppTabBarA} from './AppTabBar';
 
 export type AppTabBottomParamList = {
   HomeScreen: undefined;
@@ -19,7 +19,7 @@ const Tab = createBottomTabNavigator<AppTabBottomParamList>();
 
 export function AppTabNavigator() {
   function renderTabBar(props: BottomTabBarProps) {
-    return <AppTabBar {...props} />;
+    return <AppTabBarA {...props} />;
   }
 
   return (
